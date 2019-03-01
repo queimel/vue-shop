@@ -7,7 +7,7 @@
                 :per="perPage"
             >
                 <b-card-group columns>
-                    <product-item 
+                    <product-item
                         v-for="product in paginated('products')"
                         :product="product"
                         :key="product.id"
@@ -49,10 +49,12 @@
         },
         methods: {
             ...mapActions('products', ['fetchProducts']),
+            ...mapMutations('cart', ['addProduct']),
             addProductToCart (product) {
+                this.addProduct(product);
                 console.log(product)
             }
         }
-        
+
     }
 </script>
